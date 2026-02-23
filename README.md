@@ -11,4 +11,8 @@ Frontend -> (User Login and Signup Page and Home page when user is not logged in
 Frontend -> Chat Page interface when user is Logged In (sidebar and chat bar)
 
 # Important Tip :
-npm should is initialized for frontend , so npm commands will work in frontend directory
+you should run
+```
+npm install
+``` 
+for frontend , so npm commands can work in frontend directory
