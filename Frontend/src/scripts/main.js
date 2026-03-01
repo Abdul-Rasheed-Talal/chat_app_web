@@ -1,24 +1,44 @@
-import '../styles/style.css'
-import javascriptLogo from '../assets/svg/javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
+import Router from './router.js';
+import { renderHomePage, initHomePage } from '../pages/home.js';
+import { renderLoginPage, initLoginPage } from '../scripts/login.js';
+import { renderSignupPage, initSignupPage } from '../scripts/signup.js';
+import { renderForgotPasswordPage, initForgotPasswordPage } from '../scripts/forgot-password.js';
+import '../styles/style.css';
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
+// Define routes — this is equivalent to React Router's <Route> definitions
+const router = new Router([
+    {
+        path: '/',
+        component: renderHomePage,
+        afterRender: initHomePage,
+    },
+    {
+        path: '/login',
+        component: renderLoginPage,
+        afterRender: initLoginPage,
+    },
+    {
+        path: '/signup',
+        component: renderSignupPage,
+        afterRender: initSignupPage,
+    },
+    {
+        path: '/forgot-password',
+        component: renderForgotPasswordPage,
+        afterRender: initForgotPasswordPage,
+    },
+    // Ali Raza's chat route will be added here later:
+    // {
+    //   path: '/chat',
+    //   component: renderChatPage,
+    //   afterRender: initChatPage,
+    // },
+]);
 
-setupCounter(document.querySelector('#counter'))
+// Initialize routes
+router.setAppElement(document.querySelector('#app'));
+
+// Set default route if no hash
+if (!window.location.hash) {
+    window.location.hash = '#/';
+}

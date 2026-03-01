@@ -5,8 +5,7 @@
 npm run tailwind
 ```
 # Tasks
-### Muhammad Imran :
-Frontend -> (User profile setting, add contact & group)
+
 ### AbdulRasheed :
 Frontend -> (User Login and Signup Page and Home page when user is not logged in)
 ### Ali Raza :
